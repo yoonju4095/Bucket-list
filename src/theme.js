@@ -1,4 +1,4 @@
-export const theme = {
+const theme = {
   background: '#101010',
   itemBackground: '#313131',
   main: '#778bdd',
@@ -6,4 +6,4 @@ export const theme = {
   done: '#616161',
 };
 
-// export { theme };
+export { theme };

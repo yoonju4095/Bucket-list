@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
+import styled from 'styled-components/native';
+import PropTypes from 'prop-types';
 
 const StyledInput = styled.TextInput.attrs(({ theme }) => ({
   placeholderTextColor: theme.main,
@@ -8,17 +9,44 @@ const StyledInput = styled.TextInput.attrs(({ theme }) => ({
   width: ${({ width }) => width - 40}px;
   height: 60px;
   margin: 3px 0;
-  padding: 15px 20px;
+  padding: 15px 10px;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.itemBackground};
-  font-size: 20px;
+  font-size: 14px;
   color: ${({ theme }) => theme.text};
 `;
 
-const Input = ({ placeholder }) => {
-  const width = Dimensions.get('window').width; // 화면 넓이 구하기
+const Input = ({
+  placeholder,
+  value,
+  onChangeText,
+  onSubmitEditing,
+  onBlur,
+}) => {
+  const { width } = Dimensions.get('window');
+  return (
+    <StyledInput
+      width={width}
+      placeholder={placeholder}
+      maxLenth={50}
+      autoCapitalize='none'
+      autoCorrect={false}
+      returnKeyType='done'
+      value={value}
+      onChangeText={onChangeText}
+      onSubmitEditing={onSubmitEditing}
+      onBlur={onBlur}
+    />
+  );
+};
 
-  return <StyledInput width={width} placeholder={placeholder} maxLength={50} />;
+// props속성의 타입과 필수여부체크
+Input.propTypes = {
+  placeholder: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  onChangeText: PropTypes.func.isRequired,
+  onSubmitEditing: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
 };
 
 export default Input;
