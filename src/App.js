@@ -27,6 +27,13 @@ const List = styled.ScrollView`
   width: ${({ width }) => width - 40}px;
 `;
 
+const Button = styled.Text`
+  color: white;
+  font-size: 27px;
+  align-self: center;
+  background-color: #313131;
+`;
+
 const AllItemDelBtn = ({ width, onPress, title }) => {
   return (
     <Pressable
@@ -182,7 +189,7 @@ const App = () => {
               />
             ))}
         </List>
-        {/* <Title>완료항목 전체삭제</Title> */}
+        <Button>완료항목 전체삭제</Button>
       </Container>
     </ThemeProvider>
   );
